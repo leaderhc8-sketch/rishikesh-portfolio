@@ -90,150 +90,102 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media (max-width:720px){.container{width:min(100% - 24px,1180px)}.section-pad{padding:74px 0}.section-pad-sm{padding:54px 0}.site-header{top:10px;width:calc(100% - 18px)}.brand-lockup small{display:none}.nav-toggle{display:block}.site-nav{position:fixed;top:70px;left:9px;right:9px;display:none;flex-direction:column;align-items:stretch;padding:14px;border-radius:24px;background:#0a0f17;border:1px solid var(--line)}.nav-open .site-nav{display:flex}.site-nav a{padding:15px 16px}.hero h1{font-size:46px}.hero-subcopy{font-size:16px}.hero-layout{gap:26px}.hero-showcase{min-height:390px}.showcase-main{inset:44px 12px 28px 12px;border-radius:24px}.showcase-tile{width:130px;height:96px}.showcase-badge{width:170px;bottom:54px}.metrics-grid,.deliverables-grid,.matrix-grid,.capability-grid{grid-template-columns:1fr}.masonry{columns:1}.case-info{padding:18px}.case-media{min-height:240px}.case-info dl div{grid-template-columns:1fr}.contact-panel{padding:30px}.footer-inner{display:block}.hero-actions,.contact-actions{flex-direction:column}.btn{width:100%}}
 
 
-/* V4 brand research expansion */
-.brand-intelligence{
-  background:radial-gradient(circle at 85% 10%,rgba(111,242,220,.12),transparent 32%),linear-gradient(180deg,#080c13,#0b1018 46%,#070a0f);
+
+/* V5 Visual-first portfolio additions */
+.visual-first-intro {
+  background: linear-gradient(180deg, #070a0f 0%, #0a1019 100%);
 }
-.intelligence-intro{
-  max-width:920px;
-  margin-bottom:30px;
+
+.visual-showcase {
+  background: radial-gradient(circle at 70% 10%, rgba(111,242,220,.10), transparent 30%), #0a1019;
 }
-.intelligence-intro p{
-  margin:0;
-  color:#c8d0de;
-  font-size:19px;
+
+.visual-section-head {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(420px, 1fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 34px;
 }
-.intelligence-grid{
-  display:grid;
-  gap:20px;
+
+.visual-section-head h2 {
+  margin: 0;
+  max-width: 920px;
+  font-size: clamp(34px, 4.7vw, 72px);
+  line-height: .94;
+  letter-spacing: -.075em;
 }
-.intel-card{
-  position:relative;
-  overflow:hidden;
-  padding:30px;
-  border:1px solid var(--line);
-  border-radius:34px;
-  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-  box-shadow:0 30px 90px rgba(0,0,0,.18);
+
+.hero-board {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 34px 110px rgba(0,0,0,.38);
 }
-.intel-card:before{
-  content:"";
-  position:absolute;
-  right:-90px;
-  top:-90px;
-  width:240px;
-  height:240px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(111,242,220,.18),transparent 62%);
+
+.hero-board img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
-.intel-card h3{
-  position:relative;
-  margin:0 0 12px;
-  font-size:clamp(34px,4vw,62px);
-  line-height:.95;
-  letter-spacing:-.075em;
+
+.board-caption {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: linear-gradient(135deg, rgba(7,10,15,.74), rgba(7,10,15,.38));
+  backdrop-filter: blur(18px);
 }
-.intel-summary{
-  position:relative;
-  max-width:860px;
-  margin:0 0 26px;
-  color:#c7cfdb;
-  font-size:18px;
+
+.board-caption span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .18em;
 }
-.intel-topline{
-  position:relative;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:18px;
+
+.board-caption p {
+  max-width: 760px;
+  margin: 0;
+  color: #d7deeb;
+  font-size: 13px;
+  text-align: right;
 }
-.intel-topline span,
-.intel-topline a{
-  display:inline-flex;
-  align-items:center;
-  min-height:34px;
-  padding:0 12px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.055);
-  color:#dfe6f1;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+
+.board-caption strong {
+  color: #fff;
+  font-size: 15px;
 }
-.intel-topline a:hover{background:var(--ink);color:#080d13;}
-.intel-columns{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-.intel-columns > div{
-  padding:18px;
-  border-radius:24px;
-  border:1px solid var(--line);
-  background:rgba(0,0,0,.16);
-}
-.intel-columns h4{
-  margin:0 0 12px;
-  color:var(--gold);
-  font-size:12px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-.intel-columns ul{
-  margin:0;
-  padding-left:18px;
-  color:#d6deea;
-}
-.intel-columns li{margin:7px 0;}
-.isclinical-card{border-color:rgba(123,183,255,.26)}
-.brera-card{border-color:rgba(111,242,220,.28)}
-.exocobio-card{border-color:rgba(226,196,124,.28)}
-.merz-card{border-color:rgba(255,255,255,.20)}
-.cynosure-card{border-color:rgba(123,183,255,.28)}
-.portfolio-map{background:linear-gradient(180deg,#070a0f,#111720)}
-.portfolio-map-panel{
-  display:grid;
-  grid-template-columns:.72fr 1fr;
-  gap:34px;
-  align-items:start;
-  padding:34px;
-  border-radius:34px;
-  border:1px solid var(--line);
-  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-}
-.portfolio-map-panel h2{
-  margin:0;
-  font-size:clamp(38px,4.5vw,70px);
-  line-height:.96;
-  letter-spacing:-.075em;
-}
-.map-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.map-grid article{
-  padding:18px;
-  border-radius:22px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-}
-.map-grid strong{
-  display:block;
-  font-size:18px;
-  letter-spacing:-.04em;
-}
-.map-grid span{
-  display:block;
-  margin-top:6px;
-  color:#bec7d4;
-  font-size:13px;
-}
-@media (max-width:900px){
-  .intel-columns,.portfolio-map-panel,.map-grid{grid-template-columns:1fr;}
-  .intel-card{padding:22px;}
+
+@media (max-width: 900px) {
+  .visual-section-head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero-board {
+    border-radius: 22px;
+  }
+
+  .board-caption {
+    position: static;
+    border-radius: 0;
+    display: block;
+  }
+
+  .board-caption p {
+    text-align: left;
+    margin-top: 8px;
+  }
 }
