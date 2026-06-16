@@ -1,3 +1,95 @@
+const portfolioVisualPolish = document.createElement('style');
+portfolioVisualPolish.textContent = `
+/* V3.2 visual polish — hero balance + Bolden-inspired spacing */
+@media (min-width: 1101px) {
+  .site-header {
+    top: 22px;
+    width: min(1120px, calc(100% - 64px));
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 132px 0 82px;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, .86fr) minmax(420px, .9fr);
+    gap: 54px;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 5.85vw, 88px) !important;
+    line-height: .92;
+    letter-spacing: -.075em;
+    max-width: 720px;
+  }
+
+  .hero-subcopy {
+    max-width: 650px;
+    font-size: clamp(16px, 1.25vw, 18px);
+    margin-top: 22px;
+  }
+
+  .hero-actions {
+    margin-top: 28px;
+  }
+
+  .hero-showcase {
+    min-height: 560px;
+    transform: translateY(22px);
+  }
+
+  .showcase-main {
+    inset: 70px 46px 62px 10px;
+    border-radius: 34px;
+    transform: rotate(-1.4deg);
+  }
+
+  .showcase-tile {
+    width: 178px;
+    height: 126px;
+  }
+
+  .tile-1 {
+    right: 8px;
+    top: 24px;
+  }
+
+  .tile-2 {
+    left: 0;
+    bottom: 32px;
+  }
+
+  .showcase-badge {
+    right: 8px;
+    bottom: 128px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .hero h1 {
+    font-size: clamp(64px, 5.2vw, 96px) !important;
+    max-width: 760px;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, .9fr) minmax(480px, .92fr);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero h1 {
+    font-size: clamp(44px, 8vw, 74px) !important;
+  }
+
+  .hero {
+    padding-top: 130px;
+  }
+}
+`;
+document.head.appendChild(portfolioVisualPolish);
+
 const body = document.body;
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.site-nav a');
