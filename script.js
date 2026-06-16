@@ -1,86 +1,81 @@
-const headerToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.site-nav');
+const body = document.body;
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.site-nav a');
+const yearTarget = document.getElementById('year');
+const cursorGlow = document.querySelector('.cursor-glow');
+const reveals = document.querySelectorAll('.reveal');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const workPieces = document.querySelectorAll('.work-piece');
 const lightbox = document.querySelector('.lightbox');
-const lightboxImage = document.querySelector('.lightbox img');
-const closeLightbox = document.querySelector('.lightbox-close');
-const year = document.getElementById('year');
-const glow = document.querySelector('.cursor-glow');
+const lightboxImage = lightbox?.querySelector('img');
+const lightboxClose = document.querySelector('.lightbox-close');
 
-year.textContent = new Date().getFullYear();
+if (yearTarget) yearTarget.textContent = new Date().getFullYear();
 
-headerToggle.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  headerToggle.classList.toggle('open', isOpen);
-  headerToggle.setAttribute('aria-expanded', String(isOpen));
+navToggle?.addEventListener('click', () => {
+  const isOpen = body.classList.toggle('nav-open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
 });
 
-document.querySelectorAll('.site-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    headerToggle.classList.remove('open');
-    headerToggle.setAttribute('aria-expanded', 'false');
-  });
+navLinks.forEach(link => link.addEventListener('click', () => {
+  body.classList.remove('nav-open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+}));
+
+window.addEventListener('mousemove', (event) => {
+  if (!cursorGlow || window.innerWidth < 1000) return;
+  cursorGlow.style.left = `${event.clientX}px`;
+  cursorGlow.style.top = `${event.clientY}px`;
 });
 
-const fullMap = {
-  leader: 'assets/images/leader-cover.webp',
-  isclinical: 'assets/images/isclinical-products.webp',
-  asceplus: 'assets/images/asce-srlv.webp',
-  jovena: 'assets/images/jovena-device.webp',
-  bodystim: 'assets/images/bodystim-device.webp',
-  stimprime: 'assets/images/stimprime-hero.webp'
-};
-
-function openPreview(src, alt = 'Expanded portfolio visual') {
-  if (!lightbox || !lightboxImage) return;
-  lightboxImage.src = src;
-  lightboxImage.alt = alt;
-  lightbox.showModal();
-}
-
-document.querySelectorAll('.case-card').forEach(card => {
-  card.querySelector('.image-button')?.addEventListener('click', () => {
-    const key = card.dataset.case;
-    const image = fullMap[key];
-    const alt = card.querySelector('img')?.alt || 'Expanded portfolio visual';
-    if (image) openPreview(image, alt);
-  });
-});
-
-document.querySelectorAll('.gallery-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const image = item.dataset.full;
-    const alt = item.querySelector('img')?.alt || 'Expanded portfolio visual';
-    openPreview(image, alt);
-  });
-});
-
-closeLightbox?.addEventListener('click', () => lightbox.close());
-lightbox?.addEventListener('click', event => {
-  const dialogDimensions = lightbox.getBoundingClientRect();
-  if (
-    event.clientX < dialogDimensions.left ||
-    event.clientX > dialogDimensions.right ||
-    event.clientY < dialogDimensions.top ||
-    event.clientY > dialogDimensions.bottom
-  ) {
-    lightbox.close();
-  }
-});
-
-const observer = new IntersectionObserver(entries => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const delay = Number(entry.target.dataset.delay || 0);
-      setTimeout(() => entry.target.classList.add('visible'), delay);
-      observer.unobserve(entry.target);
+      const delay = entry.target.dataset.delay ? Number(entry.target.dataset.delay) : 0;
+      setTimeout(() => entry.target.classList.add('is-visible'), delay);
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.16 });
+}, { threshold: 0.14 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+reveals.forEach(item => revealObserver.observe(item));
 
-window.addEventListener('mousemove', event => {
-  if (!glow) return;
-  glow.style.transform = `translate(${event.clientX - 160}px, ${event.clientY - 160}px)`;
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    workPieces.forEach(piece => {
+      const tags = piece.dataset.filter || '';
+      const matches = filter === 'all' || tags.includes(filter);
+      piece.classList.toggle('is-hidden', !matches);
+    });
+  });
+});
+
+workPieces.forEach(piece => {
+  piece.addEventListener('click', () => {
+    const source = piece.dataset.full;
+    if (!source || !lightbox || !lightboxImage) return;
+    lightboxImage.src = source;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  });
+});
+
+const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) return;
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  setTimeout(() => { lightboxImage.src = ''; }, 120);
+};
+
+lightboxClose?.addEventListener('click', closeLightbox);
+lightbox?.addEventListener('click', (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeLightbox();
 });

@@ -1,36 +1,21 @@
-# Rishikesh Bhagat Portfolio Website
+# Rishikesh Bhagat Portfolio Website — V3 Update
 
-Static portfolio website built for GitHub Pages.
+This update expands the portfolio beyond a basic gallery and reframes it as a complete graphic design and brand communication website for medical aesthetics.
 
-## Files
+## What changed
 
-- `index.html` - website structure
-- `styles.css` - visual design and responsive layout
-- `script.js` - mobile nav, reveal animation, image preview
-- `assets/images` - portfolio visuals
-- `assets/downloads` - downloadable portfolio and resume
+- Stronger explanation of Leader Medical Systems as the parent marketing/distribution company
+- Expanded deliverables section to show the full graphic design scope
+- Brand-wise chapters for Leader, iS Clinical, ASCEplus, Jovena, BodyStim / Brera / Stim Prime, and other devices
+- Execution matrix for Digital / Print / Events
+- Richer positioning for a Senior Creative Designer and Team Lead
+- Upgraded single-page structure with deeper content
 
-## Free GitHub Pages Setup
+## Replace these files in GitHub
 
-1. Create a new GitHub repository named `rishikesh-portfolio`.
-2. Upload all files from this folder to the repository root.
-3. Go to **Settings > Pages**.
-4. Under **Build and deployment**, select:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-5. Save.
-6. GitHub will give you a free URL like:
-   `https://yourusername.github.io/rishikesh-portfolio/`
+- `index.html`
+- `styles.css`
+- `script.js`
+- `README.md`
 
-## Custom Domain Later
-
-When `rishikeshbhagat.studio` is purchased:
-
-1. Add the domain in **Settings > Pages > Custom domain**.
-2. Add DNS records from your domain provider to GitHub Pages.
-3. Enable **Enforce HTTPS** after DNS is verified.
-
-## Editing Contact Details
-
-Open `index.html`, search for the Contact section, and update email, phone, LinkedIn, or Instagram links.
+Do **not** remove the existing `assets/` folder from your repo.
